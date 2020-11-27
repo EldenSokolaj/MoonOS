@@ -19,9 +19,9 @@ Current issue: floating point decloration causes crash
     
     Checks for long mode capability
     
-    Switchs to long mode
-    
     Sets VGA mode to 0x13
+    
+    Switchs to long mode
     
     Jumps to 0x8000 where kernel (hopefully) is located
     
