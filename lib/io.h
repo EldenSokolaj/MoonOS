@@ -25,7 +25,7 @@ void clrscr(char color){
         vga[i] = color;
     }
 }
-/*
+
 void line(int x1, int y1, int x2, int y2, char color){
     if(x1 > x2){
         int temp = x1;
@@ -49,5 +49,5 @@ void line(int x1, int y1, int x2, int y2, char color){
         }
     }
 }
-*/
+
 #endif
