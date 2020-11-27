@@ -5,7 +5,7 @@ Currently should boot a grey screen with a single black point at location (10, 1
 
 Current issue: floating point decloration causes crash
 
-Order of events:
+[Order of events]
 
   Bootloader:
   
