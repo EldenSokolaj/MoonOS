@@ -7,6 +7,7 @@
 */
 
 #include "math.h"
+#include "font.h"
 
 typedef unsigned char byte;
 
@@ -157,6 +158,28 @@ void circ(int loc_x, int loc_y, int r, char color){
                 set(x + loc_x, y + loc_y, color);
             }
         }
+    }
+}
+
+void letter(int loc_x, int loc_y, char input, char color) {
+    unsigned char* bitmap = basicfont[input];
+    int x,y;
+    int s;
+    for (x=0; x < 8; x++) {
+        for (y=0; y < 8; y++) {
+            s = bitmap[x] & 1 << y;
+            if(s){
+                set(loc_x + y, loc_y + x, color);
+            }
+        }
+    }
+}
+
+void printString(int x, int y, const char* input, char color){
+    while(*input != '\0'){
+        letter(x, y, *input, color);
+        input++;
+        x += 8;
     }
 }
 
