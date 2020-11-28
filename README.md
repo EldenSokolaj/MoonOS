@@ -27,8 +27,4 @@ Known issue: floating point decloration causes crash (SOLVED: this is due to not
     
   Kernel:
   
-    Sets screen to grey
-    
-    Sets point at location (10, 10) to black
-    
-    [Currently io.h is the main file under development. However for now declairing a float causes a crash which has put a hold on everything else]
+    Tests current io.h functions
