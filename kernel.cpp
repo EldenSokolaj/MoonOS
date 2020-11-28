@@ -10,8 +10,6 @@
 */
 
 extern "C" void kmain(){
-    clrscr(0);
-    circ(140, 90, 70, 7);
-    circ(170, 80, 70, 0);
+    logo();
     for(;;);
 }
