@@ -1,8 +1,6 @@
 #ifndef IO_H
 #define IO_H
 
-#include "math.h"
-
 /*
     Graphics are arranged in points in 320*200 grid
     Use values in which (-1 < x < 320) and (-1 < y < 200)
@@ -26,26 +24,10 @@ void clrscr(char color){
     }
 }
 
-void line(int x1, int y1, int x2, int y2, char color){
-    if(x1 > x2){
-        int temp = x1;
-        x1 = x2;
-        x2 = temp;
-        temp = y1;
-        y1 = y2;
-        y2 = temp;
-    }
-    int deltax = x2 - x1;
-    int deltay = y2 - y1;
-    double err = 0.0;
-    double deltaError = abs((double)deltay / deltax);
-    int y = y1;
-    for(int x = x1; x < x2; x++){
-        set(x, y, color);
-        err += deltaError;
-        if(err > 0.5){
-            y += deltay;
-            err -= 1;
+void rect(int x, int y, int width, int height, char color){
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < width; j++){
+            set(x+j, y+i, color);
         }
     }
 }
