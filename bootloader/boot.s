@@ -2,9 +2,10 @@
 [ORG 0x7c00]
 
 section .text
-    global _start
-
-_start:
+    global start
+jmp 0:start
+align 16
+start:
     cld                 ;clear direction bit
     cli                 ;disable interupts
     xor ax, ax          ;set registers to zero
@@ -15,7 +16,7 @@ _start:
 
     mov [disk_id], dl
 
-    mov bp, _start      ;setup stack
+    mov bp, start       ;setup stack
     mov sp, bp
 
     mov si, welcome     ;print welcome
@@ -29,6 +30,7 @@ _start:
     mov al, 0x13
     int 0x10
     pop ax      ;end vga graphics mode switch
+    call enableSSE
     jmp SwitchToLongMode
 
 %include "lib/print.s"
@@ -86,9 +88,10 @@ _seg:
         ret
 
 %include "lib/A20.s"
+%include "lib/SSE.s"
 %include "lib/longmode.s"
 
-times 143 db 0
+times 60 db 0
 
 [bits 64]
 kernel:
