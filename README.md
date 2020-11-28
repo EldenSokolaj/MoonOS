@@ -28,3 +28,14 @@ Known issue: floating point decloration causes crash (SOLVED: this is due to not
   Kernel:
   
     Tests current io.h functions
+  
+  To install:
+  
+    preinstall qemu, nasm, and g++
+    chmod +x os.sh
+    ./os.sh bootloader
+    ./os.sh all
+    This will run the program in a qemu virtual machine, 
+    to run on hardware preform all of the above steps then write os.bin to a usb,
+    then configure the BIOS on the host computer to boot of usb before internal disk,
+    and enjoy what little there is to enjoy
