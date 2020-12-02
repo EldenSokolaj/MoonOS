@@ -3,7 +3,7 @@ A simple x86_64 operating system
 
 Currently should boot a logo screen with a loading bar and some random seeming text in the top left corner
 
-Known issue: floating point decloration causes crash (SOLVED: this is due to not enabling SSE, for know find alternatives)
+Known issue: floating point decloration causes crash (Solution: this is due to not enabling SSE, for know find alternatives)
 
 Current issue: when the size of the binary gets too big, it crashes. 
 
