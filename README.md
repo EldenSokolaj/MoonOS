@@ -1,9 +1,15 @@
 # Moon OS
 A simple x86_64 operating system
 
-Currently should boot a grey screen with a single black point at location (10, 10) in the 320/200 vga grid
+Currently should boot a logo screen with a loading bar and some random seeming text in the top left corner
 
 Known issue: floating point decloration causes crash (SOLVED: this is due to not enabling SSE, for know find alternatives)
+
+Current issue: when the size of the binary gets too big, it crashes. 
+
+    The entire kernel is being loaded into memory, so I am pretty sure it is not that.
+    My current best guess is that it is the "fake" GDT that is loaded in the bootloader,
+    and a possible solution might be to complete the GDT class
 
 [Order of events]
 
