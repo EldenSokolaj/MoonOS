@@ -52,46 +52,17 @@ times 510-($-$$) db 0
    db 0xAA
 
 _seg:
-    pusha
-    mov si, switch
+    push si
+    mov si, part_read
     call _biosPrint
-
-    mov ah, 2               ;read sectors from drive
-    mov ch, 0               ;starting at head and cilinder 0
-    mov dh, 0
-    mov cl, 3               ;starting at segment 3
-
-    xor bx, bx
-    mov es, bx
-    mov bx, 0x8000
-
-    .loop:
-        mov dl, [disk_id]
-        mov al, 1           ;read one segment
-        int 0x13            ;load
-        jc .show_part_done  ;when we can read no more, stop
-        inc byte [disk_cycle]       ;update disk_cycle var
-        cmp [disk_cycle], byte 20   ;this will max out after reading 20 segments
-        je .show_done               ;if we have loaded 20 segments without error, stop
-        inc cl
-        add bx, 513         ;next space in memory
-        jmp .loop
-    .show_done:
-        mov si, full_read
-        call _biosPrint
-        jmp .done
-    .show_part_done:
-        mov si, part_read
-        call _biosPrint
-    .done:
-        popa
-        ret
+    pop si
+    ret
 
 %include "lib/A20.s"
 %include "lib/SSE.s"
 %include "lib/longmode.s"
 
-times 60 db 0
+times 500 db 0
 
 [bits 64]
 kernel:

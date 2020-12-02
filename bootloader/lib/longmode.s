@@ -98,8 +98,14 @@ SwitchToLongMode:
                            ;Changed from "dd gdt"
                            ;Ref: Intel System Programming Manual V1 - 2.1.1.1
     
-    
    [BITS 64]
    startLongMode:
     cli						;Interupts are disabled because no IDT has been set up
+    ;xor rcx, rcx
+    ;xgetbv ;Load XCR0 register
+    ;or eax, 7 ;Set AVX, SSE, X87 bits
+    ;xsetbv ;Save back to XCR0
+    ;xor rdx, rdx
+    ;xor rax, rax
+    ;xor rcx, rcx
     jmp 0x8000

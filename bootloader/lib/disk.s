@@ -4,7 +4,7 @@ _readDisk:
     mov ah, 2               ;read sectors from drive
     mov ch, 0               ;starting at head and cilinder 0
     mov dh, 0
-    mov al, 10              ;read 5 segments
+    mov al, 40              ;read 40 segments
     mov cl, 2               ;starting at segment 2
 
     xor bx, bx
